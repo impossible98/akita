@@ -9,7 +9,7 @@ import (
 )
 
 func GetProblemList() {
-	problems :=make([]*model.Problem, 0)
+	problems := make([]*model.Problem, 0)
 	database.Db.Find(&problems)
 	for _, problem := range problems {
 		fmt.Println("problem ==> %v \n", problem)
