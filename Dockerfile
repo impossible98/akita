@@ -8,7 +8,7 @@ RUN apt-get update; \
     make install; \
     make build
 # two
-FROM alpine:3
+FROM debian:10
 WORKDIR /app
 COPY --from=one /src/dist/ ./
 ENV PORT=8080
