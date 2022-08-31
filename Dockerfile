@@ -1,16 +1,16 @@
 # one
 FROM golang:1.17 as one
 WORKDIR /src/
-ENV CGO_ENABLED=1
+ENV CGO_ENABLED=0
 COPY . .
 RUN apt-get update; \
     apt-get install --yes --no-install-recommends make; \
     make install; \
     make build
 # two
-FROM alpine:3
+FROM scratch
 WORKDIR /app
 COPY --from=one /src/dist/ ./
 ENV PORT=8080
 EXPOSE 8080
-ENTRYPOINT ["/app/akita", "serve"]
+ENTRYPOINT ["/app/akita"]
