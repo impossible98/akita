@@ -12,5 +12,9 @@ func Router() {
 	router := gin.Default()
 	router.Use(cors.Default())
 	router.GET("/ping", v1.Ping)
+	apiV1 := router.Group("/api/v1")
+	{
+		apiV1.GET("/problems", v1.GetProblemList)
+	}
 	router.Run()
 }
