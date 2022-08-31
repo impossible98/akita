@@ -13,7 +13,6 @@ import (
 func Router() {
 	router := gin.Default()
 	router.Use(cors.Default())
-	router.GET("/ping", v1.Ping)
 	router.GET("/api", api.API)
 	router.GET("/version", api.API)
 	apiV1 := router.Group("/api/v1")
