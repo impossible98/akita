@@ -5,6 +5,7 @@ import (
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	// import local packages
+	"github.com/impossible98/akita/internal/server/api"
 	"github.com/impossible98/akita/internal/server/api/v1"
 )
 
@@ -12,6 +13,7 @@ func Router() {
 	router := gin.Default()
 	router.Use(cors.Default())
 	router.GET("/ping", v1.Ping)
+	router.GET("/version", api.Version)
 	apiV1 := router.Group("/api/v1")
 	{
 		apiV1.GET("/problems", v1.GetProblemList)
