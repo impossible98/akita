@@ -8,6 +8,12 @@ import (
 )
 
 func GetProblemList(ctx *gin.Context) {
-	problem.GetProblemList()
-	ctx.String(200, "get problem list")
+	result, err := problem.GetProblemList()
+	if err != nil {
+		ctx.JSON(200, gin.H{
+			"msg": err.Error(),
+		})
+		return
+	}
+	ctx.JSON(200, result)
 }
